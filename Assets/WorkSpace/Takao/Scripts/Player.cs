@@ -16,12 +16,17 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
 
 
+    /* コンポーネント */
+
+    private Rigidbody2D m_rigidbody2D;
+
+
     /* メンバ関数 */
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        m_rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -61,7 +66,7 @@ public class Player : MonoBehaviour
             direction.Normalize();
         }
         // 移動
-        transform.localPosition += speed * Time.deltaTime * direction;
+        m_rigidbody2D.linearVelocity = speed * direction;
     }
 
 }

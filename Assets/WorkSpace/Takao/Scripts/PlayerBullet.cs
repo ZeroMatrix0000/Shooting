@@ -18,7 +18,11 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
         transform.localPosition += speed * Time.deltaTime * Vector3.right;
-        if (transform.localPosition.x > outside)
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Destroyer"))
         {
             Destroy(gameObject);
         }
