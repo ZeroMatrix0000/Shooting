@@ -6,10 +6,14 @@ public class Player : MonoBehaviour
 
     /* インスペクター */
 
+    // 移動の速さ
     [SerializeField] private float speed;
 
+    // 発射口の位置
+    [SerializeField] private Transform bulletPoint;
 
-    /* メンバ変数 */
+    // 弾のプレファブ
+    [SerializeField] private GameObject bulletPrefab;
 
 
     /* メンバ関数 */
@@ -23,35 +27,41 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = Vector2.zero;
+        // 弾を打つ
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Instantiate(bulletPrefab, bulletPoint.position, Quaternion.identity);
+        }
 
+        // 移動方向
+        Vector3 direction = Vector3.zero;
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
-            direction += Vector2.up;
+            direction += Vector3.up;
         }
         if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
         {
-            direction += Vector2.left;
+            direction += Vector3.left;
         }
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
-            direction += Vector2.down;
+            direction += Vector3.down;
         }
         if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
         {
-            direction += Vector2.right;
+            direction += Vector3.right;
         }
 
         if (direction.magnitude < 1e-6f)
         {
-            direction = Vector2.zero;
+            direction = Vector3.zero;
         }
         else
         {
             direction.Normalize();
         }
-
-        transform.localPosition += (Vector3)direction * speed * Time.deltaTime;
+        // 移動
+        transform.localPosition += speed * Time.deltaTime * direction;
     }
 
 }
