@@ -30,12 +30,14 @@ public class EnemyGenerator : MonoBehaviour
 
         if (m_elapsedTime >= m_interval)
         {
+            m_elapsedTime = 0;
+
             // ランダムな敵を生成
             int index = Random.Range(0, Enemies.Length - 1);
 
             var enemy = Instantiate(Enemies[index]);
 
-            enemy.transform.position = new Vector3( CameraTransform.position.x, Random.Range(-5.5f, 5.5f), 0 );
+            enemy.transform.position = new Vector3( CameraTransform.position.x + 13.0f, Random.Range(-5.5f, 5.5f), 0 );
 
             // 次のインターバルを設定
             m_interval = Random.Range(IntervalMin, IntervalMax);

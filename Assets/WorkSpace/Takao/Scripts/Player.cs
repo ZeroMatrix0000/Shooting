@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,7 +27,6 @@ public class Player : MonoBehaviour
     /* その他メンバ変数 */
 
     private int m_hp;
-
 
     /* メンバ関数 */
 
@@ -97,7 +97,10 @@ public class Player : MonoBehaviour
             if (m_hp <= 0)
             {
                 // ゲームオーバー処理
-                Destroy(this.gameObject);
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                this.GetComponent<Collider2D>().enabled = false;
+                this.GetComponent<ParticleSystem>().Play();
+                //Destroy(this.gameObject);
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy1Controller : MonoBehaviour
@@ -60,6 +61,8 @@ public class Enemy1Controller : MonoBehaviour
             // パーティクルを生成
             var particle = Instantiate(m_deadParticle);
             particle.transform.position = this.transform.position;
+
+            GameObject.Find("GameManager").GetComponent<GameManager>().AddScore(3000);
 
             Destroy(this.gameObject);
         }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    [SerializeField] const float DESTOROY_BORDER = -10.0f; // ‰æ–ÊŠO‚Éo‚½’e‚ğÁ‚·‹«ŠE
-
     public float m_speed;     // ’e‚Ì‘¬“x
     public Vector2 m_direction; // ’e‚Ì•ûŒü
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +20,7 @@ public class EnemyBullet : MonoBehaviour
         this.transform.position = pos;
 
         // ‰æ–ÊŠO‚Éo‚½‚çÁ‚·
-        if (pos.x < DESTOROY_BORDER)
+        if (pos.x < Camera.main.gameObject.transform.position.x - 10.0f)
         {
             Destroy(this.gameObject);
         }

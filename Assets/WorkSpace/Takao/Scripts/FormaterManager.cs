@@ -15,6 +15,8 @@ public class FormaterManager : MonoBehaviour
     // 一度に出現させる量
     [SerializeField] private float SpawnAmount;
 
+    [SerializeField] Transform CameraTransform;
+
 
     /* メンバ変数 */
 
@@ -54,7 +56,7 @@ public class FormaterManager : MonoBehaviour
 
             m_spawnPosition = Random.Range(-4f, 4f);
 
-            Instantiate(FormaterPrefab, new Vector3(10f, m_spawnPosition, 0f), Quaternion.identity);
+            Instantiate(FormaterPrefab, new Vector3(CameraTransform.position.x + 13f, m_spawnPosition, 0f), Quaternion.identity);
         }
 
         // 等間隔に出現
@@ -63,7 +65,7 @@ public class FormaterManager : MonoBehaviour
             m_spawnDelayTimer -= SpawnDelay;
             m_spawnAmount++;
 
-            Instantiate(FormaterPrefab, new Vector3(10f, m_spawnPosition, 0f), Quaternion.identity);
+            Instantiate(FormaterPrefab, new Vector3(CameraTransform.position.x + 13f, m_spawnPosition, 0f), Quaternion.identity);
         }
     }
 

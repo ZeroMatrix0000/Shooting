@@ -17,6 +17,8 @@ public class Formater : MonoBehaviour
     // 弾のプレファブ
     [SerializeField] private GameObject BulletPrefab;
 
+    [Header("Others")]
+    [SerializeField] private GameObject DeadParticle;
 
     /* メンバ変数 */
 
@@ -63,8 +65,14 @@ public class Formater : MonoBehaviour
     {
         if (collision.CompareTag("Destroyer") || collision.CompareTag("PlayerBullet"))
         {
+            // パーティクルを生成
+            var particle = Instantiate(DeadParticle);
+            particle.transform.position = this.transform.position;
+
             Destroy(collision.gameObject);
             Destroy(gameObject);
+
+            GameObject.Find("GameManager").GetComponent<GameManager>().AddScore(2000);
         }
     }
 

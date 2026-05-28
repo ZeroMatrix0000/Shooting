@@ -142,6 +142,7 @@ MonoBehaviour:
   ShotTime: 1
   BulletPoint: {fileID: 1242867224952033486}
   BulletPrefab: {fileID: 4893666781441932773, guid: 573bab800bb1f3841a3f3d83f8278c17, type: 3}
+  DeadParticle: {fileID: 3947773357712982043, guid: 8b485ac43fd3ac548a12dea9c6996cad, type: 3}
 --- !u!50 &4019009826804241490
 Rigidbody2D:
   serializedVersion: 5
