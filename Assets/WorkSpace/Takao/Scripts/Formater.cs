@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class Formater : MonoBehaviour
 {
-    // 弾の速さ
-    [SerializeField] private float Speed;
+    // 弾を
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,7 +13,7 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition += Speed * Time.deltaTime * Vector3.right;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

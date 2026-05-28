@@ -7,13 +7,13 @@ public class Player : MonoBehaviour
     /* インスペクター */
 
     // 移動の速さ
-    [SerializeField] private float speed;
+    [SerializeField] private float Speed;
 
     // 発射口の位置
-    [SerializeField] private Transform bulletPoint;
+    [SerializeField] private Transform BulletPoint;
 
     // 弾のプレファブ
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject BulletPrefab;
 
 
     /* コンポーネント */
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         // 弾を打つ
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Instantiate(bulletPrefab, bulletPoint.position, Quaternion.identity);
+            Instantiate(BulletPrefab, BulletPoint.position, Quaternion.identity);
         }
 
         // 移動方向
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
             direction.Normalize();
         }
         // 移動
-        m_rigidbody2D.linearVelocity = speed * direction;
+        m_rigidbody2D.linearVelocity = Speed * direction;
     }
 
 }
