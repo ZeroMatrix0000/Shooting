@@ -3,6 +3,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] int m_score;
+    [SerializeField] GameObject Player;
+    [SerializeField] GameObject Result;
 
     float m_elapsedTime;
 
@@ -15,11 +17,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_elapsedTime += Time.deltaTime;
-
-        if (m_elapsedTime >= 0.1f)
+        if (Player.GetComponent<Player>().IsDead())
         {
-            AddScore(10);
+            Result.GetComponent<ResultScreen>().Display(m_score);
+        }
+        else
+        {
+            m_elapsedTime += Time.deltaTime;
+
+            if (m_elapsedTime >= 0.1f)
+            {
+                AddScore(10);
+            }
         }
     }
 

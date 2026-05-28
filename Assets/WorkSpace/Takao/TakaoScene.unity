@@ -983,6 +983,7 @@ MonoBehaviour:
   SpawnInterval: 5
   SpawnDelay: 0.25
   SpawnAmount: 5
+  CameraTransform: {fileID: 0}
 --- !u!4 &1570216355
 Transform:
   m_ObjectHideFlags: 0

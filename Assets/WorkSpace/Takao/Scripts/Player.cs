@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     // 初期HP
     [SerializeField] private int InitialHP;
 
+    bool m_isDead;
+
 
     /* コンポーネント */
 
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
 
         // HPを初期化
         m_hp = InitialHP;
+
+        m_isDead = false;
     }
 
     // Update is called once per frame
@@ -100,8 +104,11 @@ public class Player : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().enabled = false;
                 this.GetComponent<Collider2D>().enabled = false;
                 this.GetComponent<ParticleSystem>().Play();
-                //Destroy(this.gameObject);
+
+                m_isDead = true;
             }
         }
     }
+
+    public bool IsDead() { return m_isDead; }
 }
