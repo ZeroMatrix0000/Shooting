@@ -15,10 +15,17 @@ public class Player : MonoBehaviour
     // 弾のプレファブ
     [SerializeField] private GameObject BulletPrefab;
 
+    // 初期HP
+    [SerializeField] private int InitialHP;
+
 
     /* コンポーネント */
 
     private Rigidbody2D m_rigidbody2D;
+
+    /* その他メンバ変数 */
+
+    private int m_hp;
 
 
     /* メンバ関数 */
@@ -27,6 +34,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+
+        // HPを初期化
+        m_hp = InitialHP;
     }
 
     // Update is called once per frame
@@ -69,4 +79,26 @@ public class Player : MonoBehaviour
         m_rigidbody2D.linearVelocity = Speed * direction;
     }
 
+    // 衝突時
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 敵の弾に当たったら
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            // HPを減らす
+            m_hp--;
+
+            // 弾を消す
+            Destroy(collision.gameObject);
+
+            // ダメージ演出
+
+            // 0以下になったら
+            if (m_hp <= 0)
+            {
+                // ゲームオーバー処理
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }

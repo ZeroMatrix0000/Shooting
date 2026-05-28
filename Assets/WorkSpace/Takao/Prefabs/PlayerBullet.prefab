@@ -106,8 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf268f7903961142bf391f5cc53c212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBullet
-  speed: 15
-  outside: 10
+  Speed: 15
 --- !u!58 &-4445439262449677666
 CircleCollider2D:
   m_ObjectHideFlags: 0
